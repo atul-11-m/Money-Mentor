@@ -22,10 +22,10 @@ export default function TotalSpendingCard() {
       <div style={{ fontSize: "2rem", fontWeight: "bold", color: "#60a5fa" }}>
         ${value.toFixed(2)}
       </div>
-      <div style={{ marginTop: "0.5rem" }}>
-        <button onClick={() => setMode("spending")}>Spending</button>
-        <button onClick={() => setMode("income")}>Income</button>
-        <button onClick={() => setMode("balance")}>Balance</button>
+      <div style={{ marginTop: "0.5rem", display: "flex", gap: 8, justifyContent: "center" }}>
+        <button className={`btn ${mode === "spending" ? "active" : ""}`} onClick={() => setMode("spending")}>Spending</button>
+        <button className={`btn ${mode === "income" ? "active" : ""}`} onClick={() => setMode("income")}>Income</button>
+        <button className={`btn ${mode === "balance" ? "active" : ""}`} onClick={() => setMode("balance")}>Balance</button>
       </div>
     </div>
   );

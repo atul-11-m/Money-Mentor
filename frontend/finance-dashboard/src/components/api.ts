@@ -48,3 +48,21 @@ export async function fetchCategoryBar(start?: string, end?: string) {
   const res = await fetch(url);
   return res.json();
 }
+
+export async function uploadCSV(file: File) {
+  const url = `${BASE_URL}/upload`;
+  const fd = new FormData();
+  fd.append("file", file);
+
+  const res = await fetch(url, {
+    method: "POST",
+    body: fd,
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || `Upload failed with status ${res.status}`);
+  }
+
+  return res.json();
+}

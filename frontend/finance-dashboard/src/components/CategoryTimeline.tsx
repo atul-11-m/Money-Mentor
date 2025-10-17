@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import { fetchTimelineByCategory } from "../components/api";
 
 const categories = [
@@ -24,21 +24,26 @@ export default function CategoryTimeline() {
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        style={{ marginBottom: "1rem", padding: "0.25rem" }}
+        className="select"
+        style={{ marginBottom: "1rem" }}
       >
         {categories.map((c) => (
           <option key={c} value={c}>{c}</option>
         ))}
       </select>
 
-      <LineChart width={500} height={250} data={data}>
-        <CartesianGrid stroke="#334155" />
-        <XAxis dataKey="posting_date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="total" stroke="#34d399" strokeWidth={2} />
-      </LineChart>
+      <div style={{ width: "100%", height: 260 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <CartesianGrid stroke="#334155" />
+            <XAxis dataKey="posting_date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="total" stroke="#34d399" strokeWidth={2} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

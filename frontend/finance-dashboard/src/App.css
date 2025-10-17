@@ -4,6 +4,9 @@
   --border:#334155;
   --muted:#94a3b8;
   --accent: #60a5fa;
+  --control-bg: rgba(255,255,255,0.03);
+  --control-border: rgba(255,255,255,0.06);
+  --control-radius: 8px;
 }
 
 .app-container{
@@ -100,3 +103,55 @@
 .nav-link:hover{background:rgba(255,255,255,0.03)}
 .cta{background:var(--accent);color:#04203a;border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
 .main-content{margin-top:8px}
+
+/* Form controls */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:var(--control-radius);
+  border:1px solid var(--control-border);
+  background:var(--control-bg);
+  color:inherit;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn:hover{filter:brightness(1.05)}
+.btn:active{transform:translateY(1px)}
+.btn:focus{outline:none;box-shadow:0 0 0 4px rgba(96,165,250,0.08)}
+.btn + .btn{margin-left:8px}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#04203a;border:none}
+
+.btn.active{background:linear-gradient(90deg,#7dd3fc,#60a5fa);color:#04203a;box-shadow:0 4px 10px rgba(96,165,250,0.12)}
+
+.input, .select, .textarea{
+  background:var(--control-bg);
+  border:1px solid var(--control-border);
+  padding:8px 10px;
+  border-radius:var(--control-radius);
+  color:inherit;
+  outline:none;
+}
+.input:focus, .select:focus, .textarea:focus{box-shadow:0 0 0 4px rgba(96,165,250,0.08);border-color:var(--accent)}
+.select{
+  appearance:none;
+  -webkit-appearance:none;
+  padding-right:36px; /* room for custom arrow */
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23aebfcf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+}
+.textarea{min-height:120px}
+
+/* style native option where possible */
+select option{background:var(--card);color:inherit}
+
+/* Form layout helpers */
+.form-row{display:flex;gap:12px;align-items:center}
+.form-label{min-width:120px;color:var(--muted);font-size:0.95rem}
+.form-field{flex:1}
+
+/* Budget progress bar */
+.progress-track{width:100%;height:18px;background:rgba(255,255,255,0.04);border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.progress-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#34d399,#60a5fa)}

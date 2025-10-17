@@ -11,23 +11,25 @@ export default function ChatbotPanel() {
   };
 
   return (
-    <div className="flex flex-col h-40">
-      <div className="flex-1 overflow-y-auto border p-2 mb-2 rounded">
+    <div style={{ display: "flex", flexDirection: "column", minHeight: 160 }}>
+      <div style={{ flex: 1, overflowY: "auto", border: "1px solid var(--border)", padding: 8, marginBottom: 8, borderRadius: 8 }}>
         {messages.map((msg, i) => (
-          <div key={i} className="mb-1 text-sm bg-gray-100 p-1 rounded">
+          <div key={i} style={{ marginBottom: 6, fontSize: 12, background: "rgba(255,255,255,0.03)", padding: 6, borderRadius: 6 }}>
             {msg}
           </div>
         ))}
       </div>
-      <div className="flex">
+      <div style={{ display: "flex" }}>
         <input
-          className="flex-1 border rounded-l px-2 text-sm"
+          className="input"
+          style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
         />
         <button
-          className="bg-blue-500 text-white px-3 rounded-r text-sm"
+          className="btn btn-primary"
+          style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
           onClick={sendMessage}
         >
           Send

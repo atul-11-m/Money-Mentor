@@ -3,12 +3,14 @@ import TopCategoriesPie from "./components/TopCategoriesPie";
 import TotalSpendingCard from "./components/TotalSpendingCard";
 import CategoryBarChart from "./components/CategoryBarChart";
 import CategoryTimeline from "./components/CategoryTimeline";
+import UploadCSV from "./components/UploadCSV";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <h1 className="app-title">Finance Dashboard</h1>
+  <h1 className="app-title">Finance Dashboard</h1>
+  <UploadCSV />
 
       <div className="dashboard">
         {/* Top row: 3 cards */}

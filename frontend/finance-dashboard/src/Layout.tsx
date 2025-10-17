@@ -13,7 +13,7 @@ export default function Layout() {
           </nav>
         </div>
         <div className="nav-right">
-          <button className="cta">Connect</button>
+          <button className="btn btn-primary">Connect</button>
         </div>
       </header>
 
