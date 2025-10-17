@@ -1,19 +1,23 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
-
-const data = [
-  { month: "Jan", spend: 400 },
-  { month: "Feb", spend: 300 },
-  { month: "Mar", spend: 500 },
-];
+import { useEffect, useState } from "react";
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { fetchTimeline } from "../components/api";
 
 export default function MonthlySpendingChart() {
+  const [data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetchTimeline().then(setData);
+  }, []);
+
   return (
-    <LineChart width={250} height={150} data={data}>
-      <CartesianGrid stroke="#eee" />
-      <XAxis dataKey="month" />
-      <YAxis />
-      <Tooltip />
-      <Line type="monotone" dataKey="spend" stroke="#8884d8" />
-    </LineChart>
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart data={data}>
+        <CartesianGrid stroke="#334155" />
+        <XAxis dataKey="posting_date" />
+        <YAxis />
+        <Tooltip />
+        <Line type="monotone" dataKey="total" stroke="#60a5fa" strokeWidth={2} />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }
