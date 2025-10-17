@@ -1,0 +1,104 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+/.next/
+/.vite/
+coverage/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+instance/
+flaskenv
+
+# Virtualenv
+ENV/
+env.bak/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.test
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and editors
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.idea/
+*.iml
+
+# Mac-specific
+.Spotlight-V100
+.Trashes
+._*
+
+# Windows-specific
+ehthumbs.db
+Icon?
+
+# JetBrains
+/.idea/
+
+# Misc
+.cache/
+.parcel-cache/
+.pnp.cjs
+.pnp.js
+
+# Credentials and secrets
+*/secrets.yml
+*/credentials.yml
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Frontend-specific
+/frontend/node_modules/
+/frontend/dist/
+/frontend/build/
+
+# Backend-specific
+/backend/venv/
+/backend/.venv/
+
+# Local config
+local.settings.json
+
+# Ignore compiled libs
+*.so
+*.dylib
+*.dll
+
+# Ignore API key
+.env.example
