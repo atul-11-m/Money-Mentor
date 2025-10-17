@@ -112,9 +112,9 @@ def get_summary():
     c = conn.cursor()
 
     query = """
-        SELECT category, SUM(amount) as total
+        SELECT category, SUM(ABS(amount)) as total
         FROM transactions
-        WHERE 1=1
+        WHERE amount < 0
     """
     params = []
     if start:
@@ -124,7 +124,7 @@ def get_summary():
         query += " AND posting_date <= ?"
         params.append(end)
 
-    query += " GROUP BY category ORDER BY total ASC"
+    query += " GROUP BY category ORDER BY total DESC"
     c.execute(query, params)
     rows = c.fetchall()
     conn.close()
@@ -166,9 +166,9 @@ def get_timeline():
     c = conn.cursor()
 
     query = """
-        SELECT posting_date, SUM(amount) as total
+        SELECT posting_date, SUM(ABS(amount)) as total
         FROM transactions
-        WHERE 1=1
+        WHERE amount < 0
     """
     params = []
     if start:
@@ -196,9 +196,9 @@ def get_timeline_by_category(category):
     c = conn.cursor()
 
     query = """
-        SELECT posting_date, SUM(amount) as total
+        SELECT posting_date, SUM(ABS(amount)) as total
         FROM transactions
-        WHERE category = ?
+        WHERE category = ? AND amount < 0
     """
     params = [category]
     if start:
@@ -244,6 +244,55 @@ def get_category_bar():
     conn.close()
 
     return jsonify([dict(row) for row in rows])
+
+# --- Net income (positive amounts only) ---
+@app.route("/income", methods=["GET"])
+def get_income():
+    start = request.args.get("start_date")
+    end = request.args.get("end_date")
+
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+
+    query = "SELECT SUM(amount) FROM transactions WHERE amount > 0"
+    params = []
+    if start:
+        query += " AND posting_date >= ?"
+        params.append(start)
+    if end:
+        query += " AND posting_date <= ?"
+        params.append(end)
+
+    c.execute(query, params)
+    total = c.fetchone()[0] or 0
+    conn.close()
+
+    return jsonify({"net_income": total})
+
+
+# --- Net balance (all amounts) ---
+@app.route("/balance", methods=["GET"])
+def get_balance():
+    start = request.args.get("start_date")
+    end = request.args.get("end_date")
+
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+
+    query = "SELECT SUM(amount) FROM transactions WHERE 1=1"
+    params = []
+    if start:
+        query += " AND posting_date >= ?"
+        params.append(start)
+    if end:
+        query += " AND posting_date <= ?"
+        params.append(end)
+
+    c.execute(query, params)
+    total = c.fetchone()[0] or 0
+    conn.close()
+
+    return jsonify({"net_balance": total})
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
