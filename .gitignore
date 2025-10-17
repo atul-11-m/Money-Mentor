@@ -99,3 +99,6 @@ local.settings.json
 *.so
 *.dylib
 *.dll
+
+# Ignore API key
+.env.example
