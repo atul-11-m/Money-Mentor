@@ -30,10 +30,10 @@ financial advisor that answers questions grounded in your actual transactions.
 
 ### Backend (Flask + SQLite)
 
-cd backend
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-python app.py 
+cd backend \
+python -m venv venv && source venv/bin/activate \
+pip install -r requirements.txt \
+python app.py   \
 
 The SQLite database (`finance.db`) is created automatically on first run.
 
