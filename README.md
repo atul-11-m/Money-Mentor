@@ -48,12 +48,14 @@ OPENAI_MODEL=gpt-5.4
 ```
 
 Without a key the dashboard and all data endpoints still work; only the AI chat
-is disabled (it returns a friendly placeholder).
+is disabled (it returns a placeholder).
 
 ### Frontend (React + Vite)
 
+```bash
 cd frontend/finance-dashboard
 npm install
 npm run dev                                       
+```
 
 The frontend calls the backend at `http://localhost:5001`.
