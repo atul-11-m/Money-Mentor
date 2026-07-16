@@ -1,8 +1,13 @@
 # MoneyMentor
 
-A full-stack personal finance dashboard. Upload a CSV bank statement to get
-instant, interactive spending visualizations, and chat with a GPT-powered
-financial advisor that answers questions grounded in your actual transactions.
+A full-stack personal finance dashboard — upload a CSV bank statement to get
+interactive spending visualizations and a GPT-powered advisor chatbot.
+
+> MoneyMentor is a project I co-built with [@krishkb06].
+> This repo is my own copy, hosted on my profile, where I've continued the work —
+> refactoring the backend into a modular Flask API, adding the Tailwind dashboard,
+> and building the GPT text-to-SQL advisor.
+
 
 **Stack:** React (TypeScript) · Vite · Tailwind CSS · Recharts · Flask · SQLite · GPT
 
