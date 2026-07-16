@@ -17,15 +17,21 @@ export default function TotalSpendingCard() {
     }
   }, [mode]);
 
+  const modes: Mode[] = ["spending", "income", "balance"];
+
   return (
-    <div style={{ textAlign: "center" }}>
-      <div style={{ fontSize: "2rem", fontWeight: "bold", color: "#60a5fa" }}>
-        ${value.toFixed(2)}
-      </div>
-      <div style={{ marginTop: "0.5rem", display: "flex", gap: 8, justifyContent: "center" }}>
-        <button className={`btn ${mode === "spending" ? "active" : ""}`} onClick={() => setMode("spending")}>Spending</button>
-        <button className={`btn ${mode === "income" ? "active" : ""}`} onClick={() => setMode("income")}>Income</button>
-        <button className={`btn ${mode === "balance" ? "active" : ""}`} onClick={() => setMode("balance")}>Balance</button>
+    <div className="text-center">
+      <div className="text-4xl font-bold text-accent">${value.toFixed(2)}</div>
+      <div className="mt-3 flex justify-center gap-2">
+        {modes.map((m) => (
+          <button
+            key={m}
+            className={`btn ${mode === m ? "active" : ""}`}
+            onClick={() => setMode(m)}
+          >
+            {m.charAt(0).toUpperCase() + m.slice(1)}
+          </button>
+        ))}
       </div>
     </div>
   );

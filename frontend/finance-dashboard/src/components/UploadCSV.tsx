@@ -22,10 +22,21 @@ export default function UploadCSV() {
   }
 
   return (
-    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
-      <input type="file" accept=".csv,text/csv" onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)} className="input" />
-      <button className="btn btn-primary" onClick={handleUpload} disabled={!file || uploading}>{uploading ? "Uploading..." : "Upload CSV"}</button>
-      {status && <div style={{ color: "var(--muted)", fontSize: 13 }}>{status}</div>}
+    <div className="mb-3 flex items-center gap-2">
+      <input
+        type="file"
+        accept=".csv,text/csv"
+        onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
+        className="input"
+      />
+      <button
+        className="btn btn-primary"
+        onClick={handleUpload}
+        disabled={!file || uploading}
+      >
+        {uploading ? "Uploading..." : "Upload CSV"}
+      </button>
+      {status && <div className="text-sm text-muted">{status}</div>}
     </div>
   );
 }

@@ -15,7 +15,7 @@ coverage/
 out/
 
 # Python
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *.egg-info/
 env/
@@ -101,4 +101,11 @@ local.settings.json
 *.dll
 
 # Ignore API key
-.env.example
+# NOTE: .env.example should be committed — it's a safe template
+
+# SQLite / local databases
+*.db
+*.sqlite3
+
+# Stale tsc output (build uses noEmit; never commit compiled JS in src)
+frontend/finance-dashboard/src/**/*.js

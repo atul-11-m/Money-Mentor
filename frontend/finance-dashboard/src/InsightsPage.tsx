@@ -1,31 +1,29 @@
 import BudgetProgress from "./components/BudgetProgress";
-import ChatbotPanel from "./components/ChatbotPanel";
-import "./App.css";
 import AiChat from "./components/AiChat";
+
+const cardClass = "flex flex-col rounded-xl border border-line bg-panel p-5 shadow-lg shadow-black/30";
+const titleClass = "mb-3 text-lg font-semibold text-white";
 
 function InsightsPage() {
   return (
     <div>
-      <h1 className="app-title">AI Insights & Budget</h1>
+      <h1 className="mb-2 text-3xl font-bold">AI Insights &amp; Budget</h1>
+      <p className="mb-4 text-muted">
+        Upload a CSV to analyze with the AI or start a chat using existing data.
+      </p>
 
-      <div style={{ marginBottom: 12 }}>
-        <p style={{ color: "var(--muted)" }}>Upload a CSV to analyze with the AI or start a chat using existing data.</p>
-      </div>
-
-      <div className="dashboard">
-        <div className="row">
-          <div className="card">
-            <h2 className="card-title">Budget Progress</h2>
-            <div className="card-body">
-              <BudgetProgress />
-            </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className={cardClass}>
+          <h2 className={titleClass}>Budget Progress</h2>
+          <div className="w-full flex-1">
+            <BudgetProgress />
           </div>
+        </div>
 
-          <div className="card">
-            <h2 className="card-title">AI Insights</h2>
-            <div className="card-body card-chat" style={{ alignItems: "stretch" }}>
-              <AiChat />
-            </div>
+        <div className={cardClass}>
+          <h2 className={titleClass}>AI Insights</h2>
+          <div className="flex h-[520px] w-full flex-col">
+            <AiChat />
           </div>
         </div>
       </div>

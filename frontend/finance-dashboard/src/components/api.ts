@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:5001";
 
 export async function fetchSummary(start?: string, end?: string) {
   let url = `${BASE_URL}/summary`;

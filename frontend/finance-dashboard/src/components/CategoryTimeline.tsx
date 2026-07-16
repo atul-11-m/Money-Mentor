@@ -8,7 +8,7 @@ const categories = [
   "Subscriptions",
   "Purchases",
   "Necessities",
-  "Transportation"
+  "Transportation",
 ];
 
 export default function CategoryTimeline() {
@@ -20,19 +20,20 @@ export default function CategoryTimeline() {
   }, [category]);
 
   return (
-    <div style={{ width: "100%" }}>
+    <div className="w-full">
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="select"
-        style={{ marginBottom: "1rem" }}
+        className="select mb-4"
       >
         {categories.map((c) => (
-          <option key={c} value={c}>{c}</option>
+          <option key={c} value={c}>
+            {c}
+          </option>
         ))}
       </select>
 
-      <div style={{ width: "100%", height: 260 }}>
+      <div className="h-[260px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <CartesianGrid stroke="#334155" />
@@ -40,7 +41,7 @@ export default function CategoryTimeline() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="total" stroke="#34d399" strokeWidth={2} />
+            <Line type="monotone" dataKey="total" stroke="#34d399" strokeWidth={2} isAnimationActive={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>

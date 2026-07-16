@@ -16,7 +16,7 @@ export default function MonthlySpendingChart() {
         <XAxis dataKey="posting_date" />
         <YAxis />
         <Tooltip />
-        <Line type="monotone" dataKey="total" stroke="#60a5fa" strokeWidth={2} />
+        <Line type="monotone" dataKey="total" stroke="#60a5fa" strokeWidth={2} isAnimationActive={false} />
       </LineChart>
     </ResponsiveContainer>
   );
