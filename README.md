@@ -40,9 +40,9 @@ The SQLite database (`finance.db`) is created automatically on first run.
 To enable the GPT advisor, create `backend/.env`:
 
 
-OPENAI_API_KEY=sk-...
-OPENAI_API_URL=https://api.openai.com/v1/chat/completions
-OPENAI_MODEL=gpt-5.4
+OPENAI_API_KEY=sk-... \
+OPENAI_API_URL=https://api.openai.com/v1/chat/completions \
+OPENAI_MODEL=gpt-5.4  \
 
 
 Without a key the dashboard and all data endpoints still work; only the AI chat
